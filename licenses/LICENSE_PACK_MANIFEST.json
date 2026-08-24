@@ -1,0 +1,36 @@
+{
+  "schema": "audion.build_licenses.pack_manifest.v1",
+  "generated_utc": "2026-08-24T17:49:35Z",
+  "run_id": "20260824T174926Z_audion-vs-engine-lite_05bed4a6",
+  "project_id": "audion-vs-engine-lite",
+  "project_name": "Audion VS Engine Lite",
+  "scan_root": "S:\\Release\\Audion VS Engine Lite",
+  "output_dir": "S:\\Release\\Audion VS Engine Lite\\licenses",
+  "files": [
+    {
+      "name": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "fa831683babdfdfd9b4cb1250cf87618c095bbb95f8ad1b93c9422a7dfac3392",
+      "size": 488504
+    },
+    {
+      "name": "SOURCE_CODE_AVAILABILITY.txt",
+      "sha256": "c60468a900ec184cd5ee728c98dcc7c547d1d99b15cff3b7786b426356f4db15",
+      "size": 1457
+    },
+    {
+      "name": "COMPONENTS.json",
+      "sha256": "00868654ce55ad52b50e7f9394718dd3aae8f8456c3f558b7e9933407e72576e",
+      "size": 147524
+    },
+    {
+      "name": "_records.json",
+      "sha256": "8f3342bd33a2fab84839293d6b3f09eb9391c49e3922bad6da4af8bb181eaa4a",
+      "size": 36181
+    },
+    {
+      "name": "LICENSE_SCAN_REPORT.md",
+      "sha256": "eaa948091e5daed172b3c209279eb9c26087c3f325754ebfad4f216e7c096a75",
+      "size": 5630
+    }
+  ]
+}

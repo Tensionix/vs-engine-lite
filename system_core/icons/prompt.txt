@@ -1,0 +1,24 @@
+{
+  "project": "Audion VS Engine Lite",
+  "source_file": "E:\\TOOLS\\PROJECTS\\_incoming_gpt_image_icons\\Сгенерированное изображение 20.png",
+  "pipeline": "GPT-Image bitmap candidate saved from UI, normalized to 1024 PNG and multi-size ICO",
+  "sizes": {
+    "app.png": "1024x1024",
+    "app.ico": [
+      "16x16",
+      "24x24",
+      "32x32",
+      "48x48",
+      "64x64",
+      "128x128",
+      "256x256"
+    ]
+  },
+  "style_rules": [
+    "background #17212B",
+    "maximum 3 objects",
+    "no repeated objects",
+    "no text",
+    "bitmap-first"
+  ]
+}

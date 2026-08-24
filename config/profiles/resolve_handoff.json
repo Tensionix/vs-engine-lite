@@ -1,0 +1,9 @@
+{
+  "palette": "precision",
+  "preset": "pregrade_prep",
+  "params": {
+    "strength": "light"
+  },
+  "encoder": "prores_422hq",
+  "description": "Minimum-touch prep for DaVinci Resolve, ProRes 422 HQ"
+}

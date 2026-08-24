@@ -1,0 +1,6 @@
+gui:
+  language: "en"
+  theme: "code_dark"
+  emoji: true
+  source_path: ""
+  destination_path: ""

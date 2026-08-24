@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Python Embedded",
+    "version": "3.12.x",
+    "license": "PSF License Version 2 and bundled third-party notices",
+    "source": "baseline-runtime",
+    "whenPathExists": [
+      "runtime/python.exe"
+    ],
+    "files": [
+      "files/LICENSE-Python-Embedded.txt"
+    ]
+  },
+  {
+    "name": "Python Embedded (VapourSynth host)",
+    "version": "3.12.x",
+    "license": "PSF License Version 2 and bundled third-party notices",
+    "source": "baseline-runtime",
+    "whenPathExists": [
+      "system_core/vapoursynth/python.exe"
+    ],
+    "files": [
+      "files/LICENSE-Python-Embedded.txt"
+    ]
+  },
+  {
+    "name": "PowerShell",
+    "version": "portable",
+    "license": "MIT",
+    "source": "baseline-runtime",
+    "whenPathExists": [
+      "system_core/powershell/pwsh.exe"
+    ],
+    "files": [
+      "files/LICENSE-PowerShell.txt"
+    ]
+  },
+  {
+    "name": "fzf",
+    "version": "bundled",
+    "license": "MIT",
+    "source": "baseline-tool",
+    "whenPathExists": [
+      "system_core/fzf.exe"
+    ],
+    "files": [
+      "files/LICENSE-fzf.txt"
+    ]
+  },
+  {
+    "name": "7-Zip",
+    "version": "bundled",
+    "license": "GNU LGPL / see bundled 7-Zip license",
+    "source": "baseline-tool",
+    "whenPathExists": [
+      "system_core/7zip/7zr.exe"
+    ],
+    "files": [
+      "files/LICENSE-7-Zip.txt"
+    ]
+  },
+  {
+    "name": "FFmpeg",
+    "version": "bundled GPL build",
+    "license": "GPL-3.0-or-later",
+    "source": "baseline-tool",
+    "whenPathExists": [
+      "Tools/ffmpeg/bin/ffmpeg.exe"
+    ],
+    "files": [
+      "files/LICENSE-FFmpeg-GPL-3.0-or-later.txt"
+    ]
+  },
+  {
+    "name": "VapourSynth",
+    "version": "present-in-release",
+    "license": "LGPL-2.1-or-later",
+    "source": "baseline-runtime",
+    "whenPathExists": [
+      "system_core/vapoursynth/Scripts/vspipe.exe"
+    ],
+    "files": [
+      "files/LICENSE-VapourSynth-LGPL-2.1-or-later.txt"
+    ]
+  },
+  {
+    "name": "NiceGUI",
+    "version": "present-in-release",
+    "license": "MIT",
+    "source": "baseline-package",
+    "whenPackagePresent": [
+      "nicegui"
+    ],
+    "files": [
+      "files/LICENSE-NiceGUI.txt"
+    ]
+  }
+]

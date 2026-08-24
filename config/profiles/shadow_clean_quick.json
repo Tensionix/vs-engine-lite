@@ -1,0 +1,13 @@
+{
+  "palette": "precision",
+  "preset": "shadow_denoise_sota",
+  "params": {
+    "sigma": 2.5,
+    "grain_back": 0.6,
+    "shadow_threshold": 0.2,
+    "transition": 0.1,
+    "use_cuda": "0"
+  },
+  "encoder": "h264_crf18",
+  "description": "Quick shadow-noise cleanup of dark digital footage"
+}

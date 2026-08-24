@@ -1,0 +1,453 @@
+/* Audion GUI stylesheet.
+ *
+ * Order here is load-bearing: of two equally specific rules the later one wins.
+ * Themes therefore recur instead of being grouped — a rule sits where the cascade
+ * needs it, not next to its relatives. The banners mark each run so the sequence
+ * can be read. Do not sort them.
+ *
+ * Move a rule only after checking that nothing it crosses sets the same property
+ * at the same specificity on the same element.
+ */
+
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          :root {
+            --audion-block-background: var(--audion-panel-background);
+          }
+          .shell {
+            display: grid;
+            grid-template-columns: minmax(680px, 1fr) minmax(400px, 520px);
+            grid-template-rows: minmax(0, 1fr);
+            gap: 8px;
+            height: calc(100vh - 40px);
+            padding: 8px;
+          }
+          .engine-main {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            min-width: 0;
+            min-height: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-gutter: auto;
+            padding-right: 8px;
+            box-sizing: border-box;
+          }
+          .engine-content {
+            flex: 1 1 auto;
+            min-width: 0;
+            min-height: 0;
+            overflow: visible;
+            padding-right: 0;
+          }
+          .engine-content > .left-stack {
+            width: 100%;
+            max-width: none;
+          }
+          .engine-right-rail {
+            display: grid;
+            grid-template-rows: auto minmax(210px, 1fr);
+            gap: 7px;
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
+          }
+          .right-codec-pane {
+            display: block;
+            height: auto;
+            max-height: none;
+            padding-left: 0;
+            overflow: visible;
+          }
+          .encode-aside {
+            height: auto;
+            max-height: none;
+            overflow: visible;
+          }
+/* ========================================================================
+   TERMINAL
+   ======================================================================== */
+          .terminal-dock {
+            height: auto;
+            min-height: 210px;
+          }
+/* ========================================================================
+   WORKBENCH
+   ======================================================================== */
+          .workspace-panel {
+            width: 100%;
+            min-width: 0;
+            padding: 5px 7px;
+            position: sticky;
+            top: 0;
+            z-index: 4;
+          }
+          .audion-workspace-panel .audion-route-groups {
+            width: 100% !important;
+            max-width: none !important;
+          }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .dashboard-grid { align-items: stretch; }
+          .dashboard-card { min-height: 0; }
+          .vs-dashboard-card { align-self: stretch; }
+          .vs-dashboard-card .vs-dashboard-row { height: 100%; }
+          .vs-dashboard-row .vs-accel-radio.q-option-group,
+          .vs-dashboard-row .vs-accel-radio .q-option-group {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 8px !important;
+            width: 100%;
+          }
+/* ========================================================================
+   SHELL
+   ======================================================================== */
+          .dashboard-actions { grid-auto-rows: 36px; }
+          .dashboard-action-button {
+            height: 36px !important;
+            min-height: 36px !important;
+          }
+          .dashboard-action-icon {
+            width: 14px;
+            min-width: 14px;
+            height: 14px;
+            min-height: 14px;
+            margin: 0;
+          }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .encode-aside { padding: 10px; }
+          .encode-aside .section-title { margin-bottom: 7px; }
+          .encode-strip {
+            min-height: 38px;
+            margin-top: 8px;
+            padding: 4px 7px;
+          }
+          .codec-grid {
+            gap: 9px;
+            margin-top: 10px;
+            align-items: stretch;
+          }
+          .codec-card {
+            padding: 10px 8px;
+          }
+          .codec-head-label { min-height: 24px; }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .codec-field-label { margin: 8px 0 4px; }
+/* ========================================================================
+   SHELL
+   ======================================================================== */
+          .q-icon,
+          .material-icons,
+          .dashboard-action-icon,
+          .audion-folder-icon-button .q-icon,
+          .audion-folder-pin-button .q-icon,
+          .audion-folder-open-button .q-icon {
+            font-size: 14px !important;
+            width: 14px !important;
+            height: 14px !important;
+            line-height: 14px !important;
+          }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .q-radio,
+          .q-checkbox {
+            min-height: 22px !important;
+          }
+          .q-radio__inner,
+          .q-checkbox__inner,
+          .vs-accel-radio .q-radio__inner,
+          .strip-radio .q-radio__inner,
+          .mini-radio .q-radio__inner {
+            width: 18px !important;
+            min-width: 18px !important;
+            height: 18px !important;
+            font-size: 18px !important;
+          }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .mini-radio { --mini-radio-dot: 18px; }
+          .mini-radio .q-radio {
+            min-height: 22px !important;
+            grid-template-columns: 18px minmax(0, 1fr);
+            column-gap: 4px;
+          }
+          .mini-radio .q-option-group { row-gap: 3px; }
+          .strip-radio .q-radio,
+          .vs-accel-radio .q-radio { min-height: 22px !important; }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .q-radio__label,
+          .q-checkbox__label { line-height: 1.1; }
+
+          /* Compact control chips: a quiet grid at rest, a clear outline on selection. */
+          .mode-radio.q-option-group,
+          .palette-radio.q-option-group {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(94px, 1fr));
+            gap: 6px !important;
+            width: 100%;
+          }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .engine-content .q-option-group,
+          .encode-aside .q-option-group {
+            row-gap: 5px;
+          }
+          .engine-content .q-option-group .q-radio,
+          .encode-aside .q-option-group .q-radio {
+            box-sizing: border-box;
+            min-height: 26px !important;
+            margin: 0 !important;
+            padding: 2px 7px 2px 4px !important;
+            color: var(--audion-control-text) !important;
+            background: var(--audion-control-chip) !important;
+            border: 1px solid var(--audion-control-ring) !important;
+            border-radius: 7px !important;
+            transition: color 140ms ease, background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+          }
+          .encode-aside .q-option-group .q-radio {
+            min-height: 26px !important;
+            padding-top: 2px !important;
+            padding-bottom: 2px !important;
+          }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .engine-content .q-option-group .q-radio .q-radio__label,
+          .encode-aside .q-option-group .q-radio .q-radio__label,
+          .engine-content .q-checkbox .q-checkbox__label {
+            color: var(--audion-control-text) !important;
+            font-weight: 500;
+          }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .engine-content .q-option-group .q-radio:is(:hover, :focus-within),
+          .encode-aside .q-option-group .q-radio:is(:hover, :focus-within) {
+            border-color: var(--audion-control-ring-active) !important;
+            background: color-mix(in srgb, var(--audion-control-chip) 88%, var(--audion-accent) 12%) !important;
+          }
+          .engine-content .q-option-group .q-radio[aria-checked="true"],
+          .encode-aside .q-option-group .q-radio[aria-checked="true"] {
+            color: var(--audion-control-text) !important;
+            background: var(--audion-control-chip-active) !important;
+            border-color: var(--audion-control-ring-active) !important;
+            box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--audion-accent) 34%, transparent 66%);
+          }
+          .engine-content .q-option-group .q-radio.disabled,
+          .encode-aside .q-option-group .q-radio.disabled {
+            opacity: .42;
+          }
+          .mini-radio.q-option-group,
+          .mini-radio .q-option-group {
+            display: grid !important;
+            grid-template-columns: 1fr;
+            row-gap: 10px !important;
+          }
+          .mini-radio .q-radio { width: 100%; }
+          .strip-radio.q-option-group,
+          .strip-radio .q-option-group {
+            column-gap: 5px !important;
+          }
+          .param-inline-radio.q-option-group,
+          .param-inline-radio .q-option-group {
+            gap: 5px !important;
+          }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .engine-content .q-checkbox {
+            box-sizing: border-box;
+            min-height: 28px !important;
+            margin: 0 !important;
+            padding: 2px 8px 2px 4px !important;
+            color: var(--audion-control-text) !important;
+            background: var(--audion-control-chip) !important;
+            border: 1px solid var(--audion-control-ring) !important;
+            border-radius: 7px !important;
+            transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+          }
+          .engine-content .q-checkbox:is(:hover, :focus-within) {
+            border-color: var(--audion-control-ring-active) !important;
+            background: color-mix(in srgb, var(--audion-control-chip) 88%, var(--audion-accent) 12%) !important;
+          }
+          .engine-content .q-checkbox[aria-checked="true"] {
+            background: var(--audion-control-chip-active) !important;
+            border-color: var(--audion-control-ring-active) !important;
+          }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .control-chip-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 6px !important;
+          }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .control-chip-grid .q-checkbox { width: 100%; }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+          .check-line { justify-self: start; min-width: 30px; }
+          .slider-cell {
+            min-height: 30px;
+            padding: 1px 15px 1px 9px;
+            display: flex;
+            align-items: center;
+            background: var(--audion-control-chip);
+            border: 1px solid var(--audion-control-ring);
+            border-radius: 7px;
+            transition: background-color 140ms ease, border-color 140ms ease;
+          }
+          .slider-cell:is(:hover, :focus-within) {
+            border-color: var(--audion-control-ring-active);
+            background: color-mix(in srgb, var(--audion-control-chip) 88%, var(--audion-accent) 12%);
+          }
+/* ========================================================================
+   FIELDS
+   ======================================================================== */
+          .number-box .q-field__control {
+            background: var(--audion-control-chip) !important;
+          }
+          .number-box .q-field__control::before {
+            border-color: var(--audion-control-ring) !important;
+          }
+          .number-box .q-field__control:hover::before,
+          .number-box.q-field--focused .q-field__control::after {
+            border-color: var(--audion-control-ring-active) !important;
+          }
+          .number-box .q-field__native,
+          .number-box input {
+            color: var(--audion-control-text) !important;
+          }
+/* ========================================================================
+   SHELL
+   ======================================================================== */
+          /* Hub-style command buttons: visible hit area, interaction outline only on demand. */
+          .engine-content .q-btn.tool-button,
+          .engine-content .q-btn.service-button,
+          .engine-content .q-btn.module-button,
+          .engine-content .q-btn.preset-button,
+          .engine-right-rail .q-btn.tool-button,
+          .engine-right-rail .q-btn.service-button,
+          .app-header .q-btn.tool-button {
+            --q-primary: var(--audion-control-text);
+            color: var(--audion-control-text) !important;
+            background: var(--audion-command-chip) !important;
+            border: 1px solid transparent !important;
+            border-radius: 6px !important;
+            box-shadow: none !important;
+            transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease !important;
+          }
+          .engine-content .q-btn.tool-button :is(.q-btn__content, .q-icon),
+          .engine-content .q-btn.service-button :is(.q-btn__content, .q-icon),
+          .engine-content .q-btn.module-button :is(.q-btn__content, .q-icon),
+          .engine-content .q-btn.preset-button :is(.q-btn__content, .q-icon),
+          .engine-right-rail .q-btn.tool-button :is(.q-btn__content, .q-icon),
+          .engine-right-rail .q-btn.service-button :is(.q-btn__content, .q-icon),
+          .app-header .q-btn.tool-button :is(.q-btn__content, .q-icon) {
+            color: inherit !important;
+          }
+          .engine-content .q-btn.tool-button:is(:hover, :focus-visible),
+          .engine-content .q-btn.service-button:is(:hover, :focus-visible),
+          .engine-content .q-btn.module-button:is(:hover, :focus-visible),
+          .engine-content .q-btn.preset-button:is(:hover, :focus-visible),
+          .engine-right-rail .q-btn.tool-button:is(:hover, :focus-visible),
+          .engine-right-rail .q-btn.service-button:is(:hover, :focus-visible),
+          .app-header .q-btn.tool-button:is(:hover, :focus-visible) {
+            color: var(--audion-control-text) !important;
+            background: color-mix(in srgb, var(--audion-command-chip) 90%, var(--audion-accent) 10%) !important;
+            border-color: var(--audion-control-ring-active) !important;
+            box-shadow: 0 0 10px color-mix(in srgb, var(--audion-accent) 16%, transparent 84%) !important;
+          }
+          .engine-content .q-btn.tool-button:active,
+          .engine-content .q-btn.service-button:active,
+          .engine-content .q-btn.module-button:active,
+          .engine-content .q-btn.preset-button:active,
+          .engine-right-rail .q-btn.tool-button:active,
+          .engine-right-rail .q-btn.service-button:active,
+          .app-header .q-btn.tool-button:active {
+            background: var(--audion-command-chip-pressed) !important;
+          }
+/* ========================================================================
+   RESPONSIVE
+   ======================================================================== */
+          @media (prefers-reduced-motion: reduce) {
+            .engine-content .q-radio,
+            .engine-content .q-checkbox,
+            .engine-content .q-btn,
+            .engine-right-rail .q-radio,
+            .engine-right-rail .q-btn,
+            .slider-cell { transition: none !important; }
+          }
+          @media (max-width: 1320px) {
+            .shell { grid-template-columns: minmax(680px, 1fr) minmax(370px, 400px); }
+            .dashboard-actions.action-grid-5 { grid-template-columns: repeat(5, minmax(62px, 1fr)); }
+            .backend-row {
+              display: grid !important;
+              grid-template-columns: 46px minmax(0, 1fr);
+              column-gap: 4px;
+              width: 100%;
+            }
+            .backend-strip-label { width: 46px; min-width: 46px; }
+            .strip-radio { width: 100%; flex: 1 1 auto; }
+            .strip-radio.q-option-group,
+            .strip-radio .q-option-group {
+              grid-template-columns: repeat(4, minmax(0, 1fr));
+              column-gap: 3px !important;
+              width: 100%;
+            }
+            .encode-aside .strip-radio .q-radio {
+              min-width: 0;
+              padding-left: 2px !important;
+              padding-right: 2px !important;
+            }
+            .strip-radio .q-radio__label {
+              min-width: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: 9px;
+            }
+          }
+          @media (max-width: 1080px) {
+            body { overflow: auto; }
+            .nicegui-content { height: auto; overflow: visible; }
+            .shell {
+              display: flex;
+              flex-direction: column;
+              height: auto;
+              overflow: visible;
+            }
+            .engine-main,
+            .engine-right-rail,
+            .engine-content { display: flex; flex-direction: column; overflow: visible; }
+            .right-codec-pane { height: auto; max-height: none; overflow: visible; }
+          }
+
+/* The shared terminal renderer marks a table row so it keeps its columns:
+   no wrapping and no hanging indent, and the panel scrolls sideways only
+   while such a line is wider than it. */
+          .terminal-line-table {
+            /* A table row keeps its columns: no wrapping, and none of the hanging
+               indent that a continuation line would otherwise be shifted by. The
+               panel scrolls sideways only while such a line is wider than it. */
+            max-width: none;
+            padding-left: 0;
+            text-indent: 0;
+            white-space: pre;
+            overflow-wrap: normal;
+            word-break: normal;
+          }

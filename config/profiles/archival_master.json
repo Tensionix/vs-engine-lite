@@ -1,0 +1,10 @@
+{
+  "palette": "precision",
+  "preset": "archive_clean",
+  "params": {
+    "denoise": "light",
+    "range": 10
+  },
+  "encoder": "prores_422hq",
+  "description": "Neutral archival master, ProRes 422 HQ output"
+}

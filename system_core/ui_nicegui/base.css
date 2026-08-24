@@ -1,0 +1,1055 @@
+/* Audion GUI stylesheet.
+ *
+ * Order here is load-bearing: of two equally specific rules the later one wins.
+ * Themes therefore recur instead of being grouped — a rule sits where the cascade
+ * needs it, not next to its relatives. The banners mark each run so the sequence
+ * can be read. Do not sort them.
+ *
+ * Move a rule only after checking that nothing it crosses sets the same property
+ * at the same specificity on the same element.
+ */
+
+/* ========================================================================
+   TERMINAL
+   ======================================================================== */
+            --audion-background: var(--color-background-tertiary);
+            --audion-header-background: var(--color-background-primary);
+            --audion-panel-background: var(--color-background-secondary);
+            --audion-module-background: color-mix(in srgb, var(--color-background-secondary) 86%, var(--color-accent-secondary) 14%);
+            --audion-terminal-background: var(--color-background-tertiary);
+            --audion-text: var(--color-text-primary);
+            --audion-secondary-text: var(--color-text-secondary);
+            --audion-muted-text: var(--color-text-tertiary);
+            --audion-panel-border: color-mix(in srgb, var(--color-border-tertiary) 62%, transparent 38%);
+            --audion-divider: color-mix(in srgb, var(--color-border-tertiary) 48%, transparent 52%);
+            --audion-input-border: color-mix(in srgb, var(--color-border-secondary) 54%, transparent 46%);
+            --audion-input-border-hover: color-mix(in srgb, var(--color-border-secondary) 72%, transparent 28%);
+            --audion-input-border-focus: color-mix(in srgb, var(--color-accent-primary) 78%, var(--color-border-secondary) 22%);
+            --audion-button-hover-border: var(--audion-input-border-hover);
+            --audion-border: var(--audion-panel-border);
+            --audion-strong-border: var(--audion-input-border-hover);
+            --audion-accent: var(--color-accent-secondary);
+            --audion-button-text: var(--color-accent-primary);
+            --audion-active-button-text: var(--color-active-button-text, var(--color-text-secondary));
+            --audion-action-amber: #B7791F;
+            --audion-action-amber-border: color-mix(in srgb, var(--audion-action-amber) 58%, var(--audion-panel-border) 42%);
+            --audion-action-amber-bg: color-mix(in srgb, var(--audion-action-amber) 20%, var(--audion-terminal-background) 80%);
+            --audion-action-amber-bg-hover: color-mix(in srgb, var(--audion-action-amber) 28%, var(--audion-terminal-background) 72%);
+            --audion-button-hover-background: var(--color-background-primary);
+            --audion-run: var(--color-accent-tertiary);
+            --audion-control-text: #d8dee6;
+            --audion-control-chip: color-mix(in srgb, var(--audion-panel-background) 94%, var(--audion-text) 6%);
+            --audion-control-chip-active: color-mix(in srgb, var(--audion-panel-background) 78%, var(--audion-accent) 22%);
+            --audion-control-ring: color-mix(in srgb, var(--audion-accent) 42%, var(--audion-panel-border) 58%);
+            --audion-control-ring-active: color-mix(in srgb, var(--audion-accent) 76%, var(--audion-input-border) 24%);
+            --audion-command-chip: color-mix(in srgb, var(--audion-terminal-background) 78%, var(--audion-panel-background) 22%);
+            --audion-command-chip-pressed: color-mix(in srgb, var(--audion-command-chip) 86%, #000 14%);
+          }
+
+          body { background: var(--audion-background); color: var(--audion-text); font-family: var(--font-sans); overflow: hidden; }
+          .nicegui-content { padding: 0; height: 100vh; overflow: hidden; }
+          .app-header {
+            height: 40px; background: var(--audion-header-background); color: var(--audion-text);
+            border-bottom: 1px solid var(--audion-divider);
+          }
+          .app-header-title,
+          .app-header-controls {
+            transform: translateY(-11px);
+          }
+          .app-header-controls { align-items: center !important; }
+          .shell {
+            display: grid; grid-template-rows: auto minmax(0, 1fr);
+            gap: 7px; height: calc(100vh - 40px); width: 100vw; box-sizing: border-box;
+            padding: 8px; overflow: hidden;
+          }
+          .q-btn, .q-btn *, .q-btn__content, .q-btn__content * { text-transform: none !important; }
+          .work-area {
+            height: 100%; min-height: 0; overflow: hidden;
+          }
+          .app-splitter, .right-splitter, .terminal-splitter {
+            width: 100%; height: 100%; min-height: 0;
+          }
+          .app-splitter .q-splitter__panel,
+          .right-splitter .q-splitter__panel,
+          .terminal-splitter .q-splitter__panel {
+            min-height: 0; overflow: hidden;
+          }
+          .app-splitter .q-splitter__separator,
+          .right-splitter .q-splitter__separator,
+          .terminal-splitter .q-splitter__separator {
+            background: transparent;
+          }
+          .app-splitter .q-splitter__separator:hover,
+          .right-splitter .q-splitter__separator:hover,
+          .terminal-splitter .q-splitter__separator:hover {
+            background: color-mix(in srgb, var(--audion-accent) 34%, transparent 66%);
+          }
+          .terminal-splitter > .q-splitter__separator {
+            height: 14px !important;
+            margin-top: 4px;
+            border-top: 1px solid var(--audion-divider);
+            border-bottom: 0;
+            background: transparent;
+          }
+          .terminal-splitter > .q-splitter__separator:hover {
+            background: color-mix(in srgb, var(--audion-accent) 22%, var(--audion-terminal-background) 78%);
+          }
+          .main-pane, .right-codec-pane {
+            height: 100%; min-height: 0; overflow: hidden;
+          }
+          .right-codec-pane {
+            display: flex; align-items: flex-start; width: 100%; box-sizing: border-box; padding-left: 10px;
+          }
+          .left-stack {
+            display: flex; flex-direction: column; min-height: 0;
+            width: 100%; height: 100%; overflow: hidden; gap: 10px;
+          }
+          .left-stack > * { width: 100%; box-sizing: border-box; }
+          .panel {
+            background: var(--audion-panel-background); border: 1px solid var(--audion-panel-border); border-radius: 4px;
+            padding: 10px; color: var(--audion-text);
+          }
+          .workspace-panel {
+            display: flex; flex-direction: column;
+            gap: 6px; padding: 6px 10px;
+          }
+          .audion-workspace-strip {
+            box-sizing: border-box;
+            display: grid;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+            min-width: 0;
+            padding: 5px 7px 5px 12px;
+            border: 1px solid var(--audion-divider);
+            border-radius: 7px;
+            background: color-mix(in srgb, var(--audion-terminal-background) 82%, var(--audion-panel-background) 18%);
+          }
+          .audion-folder-strip { grid-template-columns: minmax(230px, 1fr) minmax(230px, 1fr); }
+          .audion-route-strip { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+          .audion-route-groups {
+            width: 100%;
+            max-width: none;
+          }
+          .audion-workspace-action { width: 100% !important; min-width: 0 !important; }
+          .audion-route-action {
+            padding-left: 4px !important;
+            padding-right: 4px !important;
+          }
+          .audion-route-action .q-btn__content {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            justify-content: flex-start !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+            gap: 4px !important;
+          }
+          .audion-route-action .q-icon,
+          .audion-route-action .material-icons {
+            flex: 0 0 auto;
+            font-size: 14px !important;
+            width: 14px !important;
+            height: 14px !important;
+            line-height: 14px !important;
+          }
+          .audion-route-action .block {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .audion-folder-chip {
+            display: grid;
+            grid-template-columns: 28px 28px 28px 28px minmax(0, 1fr);
+            align-items: center;
+            gap: 3px;
+            min-width: 0;
+            width: 100%;
+            height: 28px;
+            border: 1px solid var(--audion-panel-border);
+            border-radius: 6px;
+            background: var(--audion-terminal-background);
+            overflow: hidden;
+          }
+          .audion-folder-icon-button {
+            width: 28px !important;
+            min-width: 28px !important;
+            height: 26px !important;
+            min-height: 26px !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+          }
+          .audion-folder-icon-button .q-icon,
+          .audion-folder-icon-button .material-icons {
+            font-size: 16px !important;
+            width: 16px !important;
+            height: 16px !important;
+            line-height: 16px !important;
+          }
+          .audion-folder-icon-button.pinned {
+            color: var(--audion-run) !important;
+            border-color: color-mix(in srgb, var(--audion-run) 42%, transparent 58%) !important;
+            background: color-mix(in srgb, var(--audion-terminal-background) 72%, var(--audion-run) 18%) !important;
+          }
+          .audion-folder-icon-button.unpinned {
+            color: color-mix(in srgb, var(--audion-button-text) 72%, var(--audion-muted-text) 28%) !important;
+          }
+          .audion-folder-path-select,
+          .audion-folder-path-select .q-field__inner,
+          .audion-folder-path-select .q-field__control {
+            min-width: 0 !important;
+            height: 26px !important;
+            min-height: 26px !important;
+          }
+          .audion-folder-path-select .q-field__control {
+            background: transparent !important;
+            color: var(--audion-text) !important;
+            padding: 0 4px 0 2px !important;
+          }
+          .audion-folder-path-select .q-field__control::before,
+          .audion-folder-path-select .q-field__control::after {
+            border-color: transparent !important;
+            box-shadow: none !important;
+          }
+          .audion-folder-path-select .q-field__control-container {
+            padding: 0 !important;
+            min-width: 0;
+          }
+          .audion-folder-path-select .q-field__native,
+          .audion-folder-path-select .q-field__input,
+          .audion-folder-path-select .q-field__append {
+            min-height: 26px !important;
+            height: 26px !important;
+            color: var(--audion-text) !important;
+          }
+          .audion-folder-path-select .q-field__native > span {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .audion-folder-path-select .q-field__bottom { display: none !important; }
+          .section-title { font-size: 15px; font-weight: 700; color: var(--audion-text); margin-bottom: 8px; }
+          .muted { color: var(--audion-muted-text); font-size: 13px; }
+          .folder-hint { color: #7f8b98; font-family: Consolas, monospace; font-size: 12px; }
+          .tool-button, .run-button, .service-button, .module-button {
+            color: var(--audion-accent) !important; background: transparent !important;
+            border: 1px solid transparent !important; min-height: 30px !important; height: 30px !important;
+            padding-left: 10px !important; padding-right: 10px !important;
+            text-align: center !important;
+            border-radius: 4px !important;
+          }
+          .tool-button .q-btn__content,
+          .run-button .q-btn__content,
+          .service-button .q-btn__content,
+          .module-button .q-btn__content,
+          .preset-button .q-btn__content {
+            justify-content: center !important;
+            text-align: center !important;
+            gap: 6px !important;
+            width: 100%;
+          }
+          .tool-button:hover, .run-button:hover, .service-button:hover, .module-button:hover {
+            background: color-mix(in srgb, var(--audion-panel-background) 82%, var(--audion-accent) 18%) !important; border-color: var(--audion-strong-border) !important;
+          }
+          .audion-action {
+            min-height: 28px !important;
+            height: 28px !important;
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+            color: var(--audion-button-text) !important;
+            background: transparent !important;
+            border: 1px solid transparent !important;
+          }
+          .audion-action:hover {
+            background: var(--audion-button-hover-background) !important;
+            border-color: var(--audion-button-hover-border) !important;
+          }
+          .audion-action .q-btn__content {
+            width: 100%;
+            justify-content: center;
+            flex-wrap: nowrap !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 12px;
+            line-height: 1;
+          }
+          .audion-command-nav {
+            min-height: 34px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--audion-divider);
+          }
+          .audion-nav-back { width: 112px !important; min-width: 112px !important; }
+          .audion-nav-run-button {
+            min-width: 174px;
+            max-width: 260px;
+            justify-self: end;
+            font-weight: 700;
+            border: 1px solid var(--audion-action-amber-border) !important;
+            background: var(--audion-action-amber-bg) !important;
+          }
+          .audion-nav-run-button:hover {
+            border-color: color-mix(in srgb, var(--audion-action-amber) 72%, var(--audion-panel-border) 28%) !important;
+            background: var(--audion-action-amber-bg-hover) !important;
+          }
+          .audion-nav-run-button,
+          .audion-nav-run-button .q-btn__content,
+          .audion-nav-run-button .q-icon,
+          .audion-nav-run-button .q-btn__label,
+          .audion-nav-run-button .q-btn__content > span,
+          .audion-nav-run-button .q-btn__content > div {
+            color: var(--audion-active-button-text) !important;
+          }
+          .audion-nav-run-button .q-btn__content {
+            justify-content: center !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            white-space: nowrap !important;
+          }
+          .tool-button.compact { min-width: 84px; }
+          .tool-button.short { width: 66px; }
+          .tool-button.icon-button {
+            width: 30px !important; min-width: 30px !important;
+            padding-left: 0 !important; padding-right: 0 !important;
+          }
+          .tool-button.emoji-icon-button {
+            width: 34px !important; min-width: 34px !important;
+            padding-left: 0 !important; padding-right: 0 !important;
+            font-size: 15px !important;
+          }
+          .tool-button.path-main {
+            width: 96px !important; min-width: 96px !important;
+            justify-content: center !important;
+          }
+          .path-label {
+            width: 112px; min-width: 112px; color: var(--audion-accent);
+            font-size: 13px; font-weight: 700; letter-spacing: 0;
+            display: flex; align-items: center;
+          }
+          .tool-button.input-file-button {
+            width: 178px !important; min-width: 178px !important;
+            color: var(--audion-accent) !important;
+            border-color: color-mix(in srgb, var(--audion-accent) 36%, transparent 64%) !important;
+          }
+          .tool-button.auto-button { width: 148px; color: var(--audion-run) !important; border-color: color-mix(in srgb, var(--audion-run) 40%, transparent 60%) !important; }
+          .tool-button.nav-back { width: 96px; color: #b9c3cf !important; }
+          .run-button { min-width: 168px; color: #98d36f !important; border-color: #3b4e34 !important; }
+          .run-button.nav-run { min-width: 178px; }
+          .run-title { min-width: 0; color: #cbd5df; font-family: Consolas, monospace; font-size: 13px; }
+          .inline-hint { color: #9aa3ad; font-size: 12px; margin-top: 8px; }
+          .inline-hint.mono { font-family: Consolas, monospace; overflow-wrap: anywhere; }
+          .path-row { min-width: 0; min-height: 32px; }
+          .path-select { min-width: 0; }
+          .path-select .q-field__control, .output-override .q-field__control {
+            min-height: 32px !important; height: 32px !important; background: transparent !important;
+            border-radius: 4px !important;
+          }
+          .path-select .q-field__native, .path-select .q-field__input, .path-select input,
+          .output-override .q-field__native, .output-override input {
+            min-height: 32px !important; height: 32px !important;
+            font-family: Consolas, monospace !important; font-size: 11px !important;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+          }
+          .path-select .q-field__append,
+          .output-override .q-field__append,
+          .field .q-field__append,
+          .profile-select .q-field__append {
+            min-height: 32px !important;
+            height: 32px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+          }
+          .path-select .q-field__append .q-icon,
+          .output-override .q-field__append .q-icon,
+          .field .q-field__append .q-icon,
+          .profile-select .q-field__append .q-icon {
+            align-self: center !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+          }
+          .path-select .q-field__bottom, .output-override .q-field__bottom { display: none !important; }
+          .file-select { flex: 1 1 360px; }
+          .output-override { flex: 1 1 340px; max-width: 520px; }
+          .path-pin { min-width: 50px; }
+          .path-pin-button.pinned {
+            color: var(--audion-run) !important;
+            border-color: color-mix(in srgb, var(--audion-run) 40%, transparent 60%) !important;
+          }
+          .module-grid {
+            display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr));
+            gap: 6px;
+          }
+          .workflow-grid {
+            margin-top: 6px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            width: 100%;
+          }
+          .module-tile {
+            min-height: 54px; background: var(--audion-panel-background); border: 1px solid var(--audion-panel-border); border-radius: 4px;
+            padding: 7px 10px; color: var(--audion-text);
+            transition: border-color .12s, background .12s, transform .12s;
+            display: grid; grid-template-columns: minmax(140px, auto) minmax(0, 1fr);
+            gap: 8px; align-items: center; justify-content: stretch;
+          }
+          .clickable-tile { cursor: pointer; }
+          .clickable-tile:hover {
+            border-color: color-mix(in srgb, var(--audion-accent) 62%, var(--audion-strong-border) 38%);
+            background: color-mix(in srgb, var(--audion-panel-background) 82%, var(--audion-accent) 10%);
+          }
+          .processing-tile {
+            min-height: 42px;
+            height: 42px;
+            padding: 4px 8px;
+            background: var(--audion-module-background);
+            border-color: color-mix(in srgb, var(--audion-accent) 45%, var(--audion-strong-border) 55%);
+          }
+          .processing-tile .module-button {
+            height: 26px !important;
+            min-height: 26px !important;
+            padding: 0 5px !important;
+          }
+          .module-button {
+            width: 100%; height: 28px !important; min-height: 28px !important;
+            color: #8cc7ff !important; justify-content: center !important;
+          }
+          .processing-tile .module-button .q-btn__content {
+            text-transform: uppercase !important;
+            font-size: 13px;
+            font-weight: 700;
+            gap: 5px !important;
+          }
+          .processing-tile > .module-summary { font-size: 10.5px; }
+          .module-summary { margin-top: 4px; color: var(--audion-secondary-text); font-size: 11.5px; line-height: 1.2; text-align: center; }
+          .module-tile > .module-summary {
+            margin-top: 0; text-align: left; justify-self: stretch; min-width: 0;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+          }
+          .processing-tile > .module-summary { text-align: right; }
+          .dashboard-grid {
+            display: grid;
+            grid-template-columns: minmax(210px, .28fr) minmax(520px, 1fr);
+            gap: 6px;
+            min-height: 0;
+            overflow: visible;
+          }
+          .dashboard-card { min-height: 0; padding: 8px 10px; }
+          .vs-dashboard-card {
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .input-dashboard-card {
+            grid-column: 2;
+            display: flex; flex-direction: column;
+          }
+          .profiles-dashboard-card,
+          .environment-card { grid-column: 1 / -1; }
+          .dashboard-card-body {
+            flex: 1 1 auto; min-height: 0; width: 100%;
+          }
+          .input-dashboard-body {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 7px; padding-bottom: 2px;
+          }
+          .environment-card { min-width: 0; }
+          .vs-dashboard-card { min-width: 0; }
+          .dashboard-actions {
+            display: grid; gap: 5px; align-items: stretch; justify-items: stretch;
+            justify-content: stretch; width: 100%; grid-auto-rows: 36px; min-width: 0;
+          }
+          .dashboard-actions.action-grid-2 {
+            grid-template-columns: repeat(2, minmax(82px, 128px));
+            justify-content: center;
+          }
+          .dashboard-actions.action-grid-3 {
+            grid-template-columns: repeat(3, minmax(104px, 136px));
+            justify-content: center;
+          }
+          .dashboard-actions.action-grid-5 {
+            grid-template-columns: repeat(5, minmax(70px, 1fr));
+          }
+          .dashboard-action-button {
+            width: 100% !important; min-width: 0 !important;
+            height: 36px !important; min-height: 36px !important;
+            padding: 3px 8px !important; overflow: hidden;
+            color: var(--audion-accent) !important;
+            font-size: 10px !important; line-height: 1.05 !important;
+            font-weight: 700 !important; letter-spacing: 0 !important;
+          }
+          .dashboard-action-button .q-btn__content {
+            min-width: 0; width: 100%; height: 100%;
+            display: flex !important; flex-direction: row !important;
+            align-items: center !important; justify-content: center !important;
+            white-space: nowrap !important; line-height: 1.05 !important;
+            text-align: center !important; gap: 7px !important;
+          }
+          .dashboard-action-icon {
+            width: 14px; min-width: 14px; height: 14px; min-height: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; line-height: 1; margin: 0;
+          }
+          .dashboard-action-label {
+            width: auto; min-width: 0; display: block; text-align: left;
+            font-size: 11px; font-weight: 800; line-height: 1.05;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+          }
+          .dashboard-actions > .q-btn {
+            align-self: stretch !important; justify-self: stretch !important;
+          }
+          .environment-actions-grid {
+            display: grid;
+            gap: 4px; align-items: stretch; width: 100%;
+          }
+          .environment-actions-grid.install-grid-4 { grid-template-columns: repeat(4, minmax(78px, 1fr)); }
+          .environment-actions-grid.install-grid-5 { grid-template-columns: repeat(5, minmax(72px, 1fr)); }
+          .environment-actions-grid.install-grid-3 { grid-template-columns: repeat(3, minmax(84px, 1fr)); }
+          .environment-actions-grid.install-grid-2 { grid-template-columns: repeat(2, minmax(84px, 1fr)); }
+          .environment-service-button {
+            width: 100% !important; min-width: 0 !important;
+            border-color: transparent !important;
+          }
+          .dashboard-card .service-button,
+          .dashboard-card .service-button:hover { border-color: transparent !important; }
+          .environment-service-button .q-btn__content {
+            min-width: 0; overflow: hidden; white-space: pre-line;
+          }
+          .vs-dashboard-row { min-height: 32px; }
+          .module-nav { padding: 7px 10px; }
+          .module-title { font-size: 15px; font-weight: 700; color: #f5f7fb; }
+          .vs-accel-panel {
+            min-width: 0;
+            padding: 5px 9px; min-height: 0;
+            display: flex; align-items: center; justify-content: center;
+          }
+          .vs-accel-row { min-width: 0; margin: 0 auto; }
+          .vs-accel-title {
+            width: 28px; flex: 0 0 28px; color: #f4f6f8;
+            font-size: 13px; font-weight: 800; text-align: center;
+            display: flex; align-items: center; justify-content: center;
+          }
+          .vs-accel-radio {
+            flex: 1 1 auto;
+            width: 100%;
+            max-width: 150px;
+            min-width: 0;
+          }
+          .vs-accel-radio.q-option-group,
+          .vs-accel-radio .q-option-group {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 8px !important;
+            align-items: center;
+            justify-content: stretch;
+            width: 100%;
+          }
+          .vs-dashboard-row .vs-accel-radio.q-option-group,
+          .vs-dashboard-row .vs-accel-radio .q-option-group {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 8px !important;
+          }
+          .vs-accel-radio .q-radio {
+            width: 100%;
+            margin: 0 !important;
+            min-height: 24px !important;
+            justify-content: center !important;
+          }
+          .vs-accel-radio .q-radio__inner { width: 24px !important; min-width: 24px !important; }
+          .vs-accel-radio .q-radio__label { font-size: 12px; white-space: nowrap; line-height: 1; }
+          .module-layout {
+            display: grid; grid-template-columns: minmax(0, 1fr) 348px;
+            gap: 10px; align-items: start; min-height: 0;
+          }
+          .module-main { min-width: 0; }
+          .module-main > * { width: 100%; box-sizing: border-box; }
+          .mode-radio .q-radio__label, .palette-radio .q-radio__label, .compact-radio .q-radio__label {
+            color: #d8dee6; font-size: 13px;
+          }
+          .field-grid, .io-grid {
+            display: grid; grid-template-columns: minmax(240px, 1fr) auto;
+            gap: 7px; align-items: center; margin-top: 8px;
+          }
+          .encoding-grid {
+            display: grid; grid-template-columns: minmax(260px, 1fr) auto;
+            gap: 7px; align-items: center; margin-top: 8px;
+          }
+          .encode-aside {
+            background: var(--audion-panel-background); border: 1px solid var(--audion-panel-border);
+            border-radius: 4px; padding: 8px; color: var(--audion-text);
+            width: 100%; flex: 1 1 auto; box-sizing: border-box; height: 100%; min-height: 0; overflow: auto;
+          }
+          .encode-aside .encoding-grid { grid-template-columns: 1fr; }
+          .encode-aside .section-title { margin-bottom: 4px; }
+          .encode-block {
+            border: 1px solid var(--audion-panel-border); border-radius: 4px; padding: 5px 7px;
+            background: #101419; margin-top: 5px;
+          }
+          .encode-strip {
+            border: 1px solid var(--audion-panel-border); border-radius: 4px; padding: 2px 7px;
+            background: color-mix(in srgb, var(--audion-terminal-background) 82%, var(--audion-panel-background) 18%); margin-top: 5px;
+            min-height: 30px; display: flex; align-items: center; justify-content: center;
+          }
+          .backend-row { margin: 0 auto; }
+          .strip-radio { flex: 0 0 auto; min-width: 0; }
+          .strip-radio.q-option-group,
+          .strip-radio .q-option-group {
+            display: grid !important; grid-template-columns: repeat(4, max-content);
+            column-gap: 8px; align-items: center; justify-content: center;
+          }
+          .strip-radio .q-radio { margin: 0 !important; min-height: 24px !important; }
+          .strip-radio .q-radio__inner { width: 24px !important; min-width: 24px !important; }
+          .strip-radio .q-radio__label { font-size: 10.5px; white-space: nowrap; line-height: 1; }
+          .codec-grid {
+            display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 6px; margin-top: 7px;
+          }
+          .codec-card {
+            min-width: 0; border: 1px solid var(--audion-panel-border); border-radius: 4px;
+            background: color-mix(in srgb, var(--audion-terminal-background) 86%, var(--audion-panel-background) 14%);
+            padding: 8px 7px; cursor: pointer; transition: opacity .12s, border-color .12s, background .12s;
+            text-align: center;
+          }
+          .codec-card.active { border-color: var(--audion-accent); background: color-mix(in srgb, var(--audion-panel-background) 72%, var(--audion-accent) 12%); opacity: 1; }
+          .codec-card.inactive { opacity: .42; }
+          .codec-card:hover { opacity: 1; border-color: color-mix(in srgb, var(--audion-accent) 72%, var(--audion-strong-border) 28%); }
+          .codec-head-label {
+            display: block; width: 100%; min-height: 24px; color: var(--audion-accent);
+            font-size: 13px; font-weight: 800; text-align: center;
+          }
+          .codec-field-label {
+            display: block; margin: 5px 0 1px; color: #aeb8c4;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+          }
+          .mini-radio .q-option-group {
+            display: grid !important; grid-template-columns: 1fr;
+            row-gap: 7px; align-items: start;
+          }
+          .mini-radio { --mini-radio-dot: 21px; }
+          .mini-radio .q-radio {
+            margin: 0 !important; min-height: 28px !important;
+            display: grid !important;
+            grid-template-columns: var(--mini-radio-dot) minmax(0, 1fr);
+            column-gap: 5px;
+            align-items: center !important;
+            justify-content: start !important;
+            text-align: left !important;
+          }
+          .mini-radio .q-radio__content {
+            display: contents !important;
+          }
+          .mini-radio .q-radio > span.no-outline {
+            display: none !important;
+          }
+          .strip-radio .q-radio,
+          .param-inline-radio .q-radio {
+            justify-content: center !important;
+          }
+          .mini-radio .q-radio__inner { width: var(--mini-radio-dot) !important; min-width: var(--mini-radio-dot) !important; justify-self: center; }
+          .mini-radio .q-radio__label { font-size: 11px; white-space: nowrap; line-height: 1; text-align: left; }
+          .forced-cpu .q-option-group { grid-template-columns: max-content !important; }
+          .encoder-readout {
+            margin-top: 5px; color: var(--audion-muted-text); font-family: var(--font-mono);
+            font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+          }
+          .encode-footer { min-height: 26px; }
+          .encode-check { color: #d8dee6; }
+          .encode-check .q-checkbox__label { font-size: 13px; }
+          .backend-strip-label {
+            width: 50px; flex: 0 0 50px; color: #aeb8c4; font-size: 11px;
+            font-weight: 700; text-transform: uppercase; text-align: center;
+            display: flex; align-items: center; justify-content: center;
+          }
+          .encode-radio-list .q-option-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .field, .profile-select { min-width: 0; }
+          .profile-select { flex: 1 1 280px; }
+          .profile-toggle {
+            display: grid !important;
+            grid-template-columns: repeat(var(--profile-toggle-count, 5), minmax(0, 1fr));
+            width: 100%;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--audion-input-border);
+            border-radius: 6px;
+            background: var(--audion-terminal-background);
+            box-shadow: none !important;
+          }
+          .profile-toggle .q-btn {
+            width: 100%;
+            min-width: 0;
+            min-height: 32px !important;
+            height: 32px !important;
+            padding: 0 7px !important;
+            color: var(--audion-secondary-text) !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            border-right: 1px solid var(--audion-divider) !important;
+            box-shadow: none !important;
+          }
+          .profile-toggle .q-btn:last-child { border-right: 0 !important; }
+          .profile-toggle .q-btn__content {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            line-height: 1;
+          }
+          .profile-toggle .q-btn:hover {
+            color: var(--audion-text) !important;
+            background: color-mix(in srgb, var(--audion-panel-background) 80%, var(--audion-accent) 20%) !important;
+          }
+          .profile-toggle .q-btn.q-btn--active,
+          .profile-toggle .q-btn[aria-pressed="true"],
+          .profile-toggle .q-btn.bg-primary {
+            color: var(--audion-accent) !important;
+            background: color-mix(in srgb, var(--audion-panel-background) 72%, var(--audion-accent) 28%) !important;
+          }
+          .check-line { color: #d8dee6; align-self: center; }
+          .preset-param-row {
+            display: grid; grid-template-columns: 132px minmax(0, 1fr);
+            gap: 10px; align-items: stretch;
+          }
+          .preset-panel, .params-panel { min-width: 0; }
+          .preset-panel-wide {
+            flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
+          }
+          .palette-strip { margin-bottom: 4px; }
+          .preset-list-wide { min-height: 0; overflow: auto; }
+          .preset-row {
+            display: grid; grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+            gap: 8px; align-items: center; min-width: 0; min-height: 48px;
+            border-bottom: 1px solid var(--audion-divider); padding: 4px 8px;
+            text-align: center; cursor: pointer;
+          }
+          .preset-row.selected { background: #172027; border-radius: 4px; padding-left: 4px; }
+          .preset-row:hover { background: color-mix(in srgb, var(--audion-panel-background) 82%, var(--audion-accent) 9%); }
+          .preset-button {
+            color: #77c7d4 !important; background: transparent !important; text-align: center !important;
+            justify-self: stretch; overflow: hidden; width: 100%;
+            font-size: 15px !important; font-weight: 700 !important; letter-spacing: 0 !important;
+          }
+          .preset-button .q-btn__content {
+            justify-content: center !important; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+            font-size: 15px !important; line-height: 1.15 !important;
+          }
+          .preset-text { min-width: 0; width: 100%; gap: 2px; }
+          .preset-description {
+            min-width: 0; color: #b8c0ca; font-size: 13px; line-height: 1.25;
+            overflow-wrap: anywhere; text-align: left; justify-self: stretch;
+          }
+          .params-grid {
+            display: flex; flex-direction: column;
+            gap: 5px; align-items: stretch;
+          }
+          .param-row {
+            display: grid; grid-template-columns: 138px minmax(260px, 430px) minmax(220px, 1fr);
+            gap: 10px; align-items: center; min-height: 38px;
+            min-width: 0; border: 1px solid var(--audion-panel-border); border-radius: 4px;
+            background: color-mix(in srgb, var(--audion-terminal-background) 82%, var(--audion-panel-background) 18%);
+            padding: 4px 16px 4px 8px; box-sizing: border-box;
+          }
+          .param-control { min-width: 0; gap: 4px; }
+          .param-label { color: var(--audion-secondary-text); font-size: 13px; font-weight: 700; }
+          .param-description { min-width: 0; color: var(--audion-muted-text); font-size: 12px; line-height: 1.2; overflow-wrap: anywhere; }
+          .param-inline-radio .q-option-group {
+            display: grid !important; grid-template-columns: repeat(4, max-content);
+            column-gap: 10px; align-items: center;
+          }
+          .param-number-control {
+            display: grid; grid-template-columns: 92px 100px minmax(0, 1fr);
+            gap: 8px; align-items: center; min-width: 0; width: 100%; max-width: 100%;
+            box-sizing: border-box; overflow: visible;
+          }
+          .param-number-control:not(:has(.param-mini-label)) {
+            grid-template-columns: 100px minmax(0, 1fr);
+          }
+          .param-mini-label {
+            color: var(--audion-secondary-text); font-size: 12px;
+            width: 92px; min-width: 92px; text-align: right; line-height: 1.1;
+          }
+          .param-row-group { grid-template-columns: 82px minmax(0, 1fr); }
+          .param-row-group .param-description { display: none; }
+          .param-pair-controls {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px; align-items: center; min-width: 0; width: 100%; max-width: 100%;
+            box-sizing: border-box; overflow: visible;
+          }
+          .param-row-group .param-number-control {
+            grid-template-columns: 78px 90px minmax(0, 1fr);
+            gap: 7px;
+          }
+          .param-row-group .param-mini-label {
+            width: 78px; min-width: 78px;
+          }
+          .param-row-group .number-box {
+            width: 90px; flex: 0 0 90px;
+          }
+          .number-box { width: 100px; flex: 0 0 100px; }
+          .number-box .q-field__control {
+            min-height: 38px !important; height: 38px !important;
+            background: var(--audion-terminal-background) !important;
+            border-radius: 4px !important;
+          }
+          .number-box .q-field__native,
+          .number-box input {
+            min-height: 38px !important; height: 38px !important;
+            padding: 0 2px 0 10px !important; text-align: center !important;
+            font-size: 14px !important; font-weight: 700 !important;
+          }
+          .audion-number .q-field__marginal,
+          .audion-number .q-field__append {
+            min-height: 38px !important;
+            height: 38px !important;
+            display: flex !important;
+            align-items: center !important;
+            align-self: center !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+          }
+          .audion-number input[type="number"]::-webkit-inner-spin-button,
+          .audion-number input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          .audion-number input[type="number"] {
+            appearance: textfield;
+            -moz-appearance: textfield;
+          }
+          .audion-number-spinner {
+            width: 18px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-right: -2px;
+          }
+          .audion-number-spin-button {
+            width: 18px !important;
+            min-width: 18px !important;
+            height: 12px !important;
+            min-height: 12px !important;
+            padding: 0 !important;
+            border-radius: 3px !important;
+            color: var(--audion-button-text) !important;
+            opacity: 0.92;
+          }
+          .audion-number-spin-button:hover {
+            opacity: 1;
+            color: var(--audion-button-text) !important;
+            background: var(--audion-button-hover-background) !important;
+          }
+          .audion-number-spin-button .q-icon {
+            font-size: 13px !important;
+            line-height: 1 !important;
+          }
+          .slider-cell {
+            min-width: 0; width: 100%; max-width: 100%;
+            padding-right: 18px; box-sizing: border-box;
+          }
+          .slider {
+            min-width: 0 !important; width: 100% !important; max-width: 100% !important;
+            justify-self: stretch; box-sizing: border-box; margin-right: 0;
+          }
+          .service-grid {
+            display: grid; grid-template-columns: repeat(6, minmax(110px, 1fr));
+            gap: 8px; margin-bottom: 8px;
+          }
+          .terminal-dock {
+            display: flex; flex-direction: column; gap: 6px; width: 100%; box-sizing: border-box;
+            height: 100%; min-height: 0; background: color-mix(in srgb, var(--audion-panel-background) 72%, var(--audion-terminal-background) 28%);
+            border: 1px solid var(--audion-panel-border); border-radius: 8px; padding: 8px; overflow: hidden;
+          }
+          .terminal-progress-strip {
+            flex: 0 0 auto; width: 100%; height: 3px !important; min-height: 3px !important;
+            border-radius: 999px; overflow: hidden; opacity: .95;
+          }
+          .terminal-progress-strip .q-linear-progress__track { opacity: .18; }
+          .terminal-head { flex: 0 0 auto; min-height: 22px; color: #d8dee6; }
+          .terminal-head-title { font-size: 14px; font-weight: 700; color: #f5f7fb; }
+          .status-text { color: #aab4bf; font-size: 12px; }
+          .terminal-action-button {
+            width: 100% !important; min-width: 0 !important;
+            padding-left: 4px !important; padding-right: 4px !important;
+            color: var(--audion-accent) !important;
+            border-color: color-mix(in srgb, var(--audion-accent) 34%, transparent 66%) !important;
+            font-size: 11px !important;
+          }
+          .terminal-icon-button {
+            width: 34px !important; min-width: 34px !important;
+            height: 28px !important; min-height: 28px !important;
+            padding: 0 !important;
+          }
+          .terminal-toolbar {
+            display: grid !important; grid-template-columns: repeat(5, minmax(0, 1fr)) 34px 34px;
+            flex: 0 0 auto; min-width: 0; min-height: 34px; padding: 3px;
+            column-gap: 4px; row-gap: 0;
+            border: 1px solid var(--audion-panel-border); border-radius: 6px;
+            background: color-mix(in srgb, var(--audion-terminal-background) 78%, var(--audion-panel-background) 22%);
+            flex-wrap: nowrap !important;
+          }
+          .environment-install-row {
+            display: grid !important;
+            flex: 0 0 auto; min-width: 0; min-height: 34px; padding: 3px;
+            column-gap: 4px; row-gap: 0;
+            border: 1px solid color-mix(in srgb, var(--audion-run) 28%, var(--audion-panel-border) 72%);
+            border-radius: 6px;
+            background: color-mix(in srgb, var(--audion-terminal-background) 84%, var(--audion-run) 16%);
+            flex-wrap: nowrap !important;
+          }
+          .install-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+          .install-grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+          .install-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+          .install-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .environment-install-button {
+            width: 100% !important; min-width: 0 !important;
+            padding-left: 4px !important; padding-right: 4px !important;
+            font-size: 11px !important;
+            color: var(--audion-run) !important;
+            border-color: color-mix(in srgb, var(--audion-run) 38%, transparent 62%) !important;
+          }
+          .terminal-footer { flex: 0 0 auto; min-height: 22px; border-top: 1px solid var(--audion-divider); color: #aab4bf; }
+          .terminal {
+            flex: 1 1 auto; min-height: 0; height: 100% !important; overflow-y: auto !important; overflow-x: hidden !important;
+            max-width: 100%;
+            background: var(--audion-terminal-background) !important; color: var(--audion-secondary-text) !important;
+            border: 1px solid var(--audion-input-border); border-radius: 6px; padding: 8px;
+            font-family: var(--font-mono) !important; font-size: 12px !important; line-height: 1.35 !important;
+            box-sizing: border-box; user-select: text !important; cursor: text;
+          }
+          .terminal-pre {
+            margin: 0; min-width: 0; max-width: 100%; color: inherit; background: transparent;
+            font-family: inherit !important; font-size: inherit !important; line-height: inherit !important;
+            white-space: normal; overflow-wrap: anywhere; word-break: normal;
+            user-select: text !important;
+          }
+          .terminal-pre span { overflow-wrap: inherit; word-break: inherit; }
+          .terminal-line {
+            display: block;
+            min-height: 1.35em;
+            max-width: 100%;
+            padding-left: 5ch;
+            text-indent: -5ch;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            user-select: text !important;
+          }
+          .theme-select {
+            width: 166px; min-height: 32px !important; height: 32px !important;
+          }
+          .theme-select.q-field, .theme-select .q-field__inner {
+            min-height: 32px !important; height: 32px !important; padding-bottom: 0 !important;
+          }
+          .theme-select .q-field__control {
+            min-height: 32px !important; height: 32px !important; background: transparent !important;
+            padding: 0 28px !important;
+            position: relative !important;
+          }
+          .theme-select .q-field__native, .theme-select .q-field__append {
+            color: var(--audion-accent) !important; min-height: 32px !important; height: 32px !important;
+            line-height: 32px !important;
+          }
+          .theme-select .q-field__native,
+          .profile-select .q-field__native,
+          .param-select .q-field__native {
+            display: flex !important;
+            text-align: center !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 0 !important;
+          }
+          .theme-select .q-field__native span,
+          .profile-select .q-field__native span,
+          .param-select .q-field__native span {
+            width: 100%;
+            text-align: center !important;
+          }
+          .profile-select .q-field__input,
+          .profile-select input,
+          .param-select .q-field__input,
+          .param-select input {
+            caret-color: transparent !important;
+          }
+          .theme-select .q-field__append {
+            position: absolute !important;
+            right: 8px !important;
+            top: 0 !important;
+            width: 18px !important;
+            justify-content: center !important;
+          }
+          .theme-select .q-field__bottom { display: none !important; }
+          .audion-select-popup .q-item,
+          .audion-select-popup .q-item__section,
+          .audion-select-popup .q-item__label {
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          .status-dot { font-size: 18px; line-height: 1; }
+          .status-dot.idle { color: #6b7280; }
+          .status-dot.running { color: #77c7d4; animation: pulse 1.4s infinite; }
+          .status-dot.ok { color: #98d36f; }
+          .status-dot.error { color: #e06b74; }
+          @keyframes pulse { 0%, 100% { opacity: .45; }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+ 50% { opacity: 1; }
+/* ========================================================================
+   RESPONSIVE
+   ======================================================================== */
+ }
+          @media (max-width: 1280px) {
+            .work-area { grid-template-columns: minmax(620px, 1fr) 450px; }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+            .audion-folder-strip,
+            .audion-route-strip { grid-template-columns: minmax(0, 1fr); }
+            .codec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .params-grid { grid-template-columns: repeat(2, minmax(190px, 1fr)); }
+            .service-grid { grid-template-columns: repeat(3, minmax(130px, 1fr)); }
+/* ========================================================================
+   RESPONSIVE
+   ======================================================================== */
+          }
+          @media (max-width: 980px) {
+            body { overflow: auto; }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+            .nicegui-content { height: auto; overflow: visible; }
+            .shell { display: flex; flex-direction: column; height: auto; overflow: visible; }
+            .work-area { display: flex; flex-direction: column; overflow: visible; }
+            .right-pane { display: flex; flex-direction: column; overflow: visible; }
+            .left-stack { height: auto; overflow: visible; }
+            .module-grid { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .vs-dashboard-card,
+            .input-dashboard-card { grid-column: 1; }
+/* ========================================================================
+   SHELL
+   ======================================================================== */
+            .dashboard-actions.action-grid-5 { grid-template-columns: repeat(3, minmax(76px, 1fr)); }
+            .environment-actions-grid.install-grid-5 { grid-template-columns: repeat(2, minmax(132px, 1fr)); }
+/* ========================================================================
+   BASE
+   ======================================================================== */
+            .module-layout { grid-template-columns: 1fr; }
+            .encode-aside { position: static; }
+            .preset-param-row { grid-template-columns: 1fr; }
+            .params-grid { grid-template-columns: 1fr; }
+            .io-grid, .encoding-grid { grid-template-columns: 1fr; }
+/* ========================================================================
+   TERMINAL
+   ======================================================================== */
+            .terminal-dock { min-height: 260px; }
+          }
+        

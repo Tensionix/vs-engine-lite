@@ -1,0 +1,9 @@
+{
+  "palette": "retro",
+  "preset": "vhs_crt",
+  "params": {
+    "intensity": 1.2
+  },
+  "encoder": "h264_crf18",
+  "description": "VHS / CRT retro at intensity 1.2"
+}

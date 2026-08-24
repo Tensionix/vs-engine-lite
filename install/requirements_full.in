@@ -1,0 +1,32 @@
+# Core
+pip-tools
+requests
+tqdm
+pydantic
+
+# GUI layer
+nicegui
+pywebview
+pyyaml
+rich
+psutil
+
+# Documents / parsing
+python-docx
+lxml
+markdown-it-py
+
+# Optional packs - uncomment when the project needs them
+# openai
+# google-genai
+# markitdown[all]
+# pandas
+# openpyxl
+# pymupdf
+# python-pptx
+
+# Test and audit layer
+pytest
+# NiceGUI's headless `user` fixture parses the rendered page with BeautifulSoup;
+# the Screen fixture would need selenium and is deliberately not used.
+beautifulsoup4

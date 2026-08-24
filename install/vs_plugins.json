@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "remove_python_packages": [
+    "havsfunc",
+    "vsjetpack",
+    "vapoursynth-akarin",
+    "vapoursynth-fmtconv",
+    "vapoursynth-vszip",
+    "jetpytools"
+  ],
+  "python_packages": [
+    { "id": "vsrepo", "package": "vsrepo", "probe": "module", "name": "vsrepo" },
+    { "id": "vsutil", "package": "vsutil", "probe": "module", "name": "vsutil" },
+    { "id": "havsfunc", "package": "havsfunc==33", "probe": "module", "name": "havsfunc", "force_reinstall": true, "no_dependencies": true },
+    { "id": "znedi3", "package": "vapoursynth-znedi3", "probe": "namespace", "name": "znedi3", "force_reinstall": true, "no_dependencies": true }
+  ],
+  "vsrepo_packages": [
+    { "id": "lsmas", "probe": "namespace", "name": "lsmas" },
+    { "id": "ffms2", "probe": "namespace", "name": "ffms2" },
+    { "id": "fmtconv", "probe": "namespace", "name": "fmtc" },
+    { "id": "neo_f3kdb", "probe": "namespace", "name": "neo_f3kdb" },
+    { "id": "addgrain", "probe": "namespace", "name": "grain" },
+    { "id": "knlmeanscl", "probe": "namespace", "name": "knlm" },
+    { "id": "bm3dcpu", "probe": "namespace", "name": "bm3dcpu" },
+    { "id": "dfttest", "probe": "namespace", "name": "dfttest" },
+    { "id": "mvsfunc", "probe": "module", "name": "mvsfunc" },
+    { "id": "mvtools", "probe": "namespace", "name": "mv" },
+    { "id": "tivtc", "probe": "namespace", "name": "tivtc" },
+    { "id": "focus2", "probe": "namespace", "name": "focus2" },
+    { "id": "rgvs", "probe": "namespace", "name": "rgvs" },
+    { "id": "misc", "probe": "namespace", "name": "misc" },
+    { "id": "tcanny", "probe": "namespace", "name": "tcanny" },
+    { "id": "eedi3m", "probe": "namespace", "name": "eedi3m" },
+    { "id": "bwdif", "probe": "namespace", "name": "bwdif" },
+    { "id": "neo_fft3d", "probe": "namespace", "name": "neo_fft3d" },
+    { "id": "nnedi3_resample", "probe": "module", "name": "nnedi3_resample", "skip_dependencies": true }
+  ],
+  "optional_cuda_packages": [
+    { "id": "bm3dcuda", "probe": "namespace", "name": "bm3dcuda" }
+  ]
+}
