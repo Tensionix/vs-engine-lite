@@ -8,7 +8,7 @@
 - [Direct download](https://audion.dev/get/vs-engine-lite/2.0.1/Audion_VS_Engine_Lite_v2.0.1_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/vs-engine-lite) — every version and how to install
 
-![The program window](docs/screenshot.png)
+<img src="docs/screenshot.png" alt="The program window" width="560">
 
 `SHA-256: 31f6d20014e0c93025f5b99b5883454290071523b4622f9c76c6fb32dd48e88d`
 
