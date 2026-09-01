@@ -9,10 +9,10 @@ record and does not replace review of the applicable license terms.
 BUNDLED COMPONENTS WITH SOURCE REFERENCES
 --------------------------------------------------------------------------------
 Component: bidict
-Version/profile: 0.23.1
+Version/profile: 0.24.1
 Method: upstream_pin
-version: 0.23.1
-url: https://pypi.org/project/bidict/0.23.1/
+version: 0.24.1
+url: https://pypi.org/project/bidict/0.24.1/
 
 Component: certifi
 Version/profile: 2026.7.22
