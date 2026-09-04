@@ -10,7 +10,7 @@
 
 **Version 2.0.2** · 2026-09-04 · 449.5 MB
 
-- [Direct download](https://dl.audion.dev/vs-engine-lite/2.0.2/Audion_VS_Engine_Lite_v2.0.2_Full.zip) — unmetered, no rate limits
+- [Direct download](https://audion.dev/get/vs-engine-lite/2.0.2/Audion_VS_Engine_Lite_v2.0.2_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/vs-engine-lite) — every version and how to install
 
 <p align="center"><img src="docs/screenshot.png" alt="The program window" width="560"></p>
@@ -23,7 +23,16 @@ An **Audion** tool, published by [Tensionix](https://github.com/Tensionix).
 <!-- /audion:release -->
 
 
-[Русский](README_RU.md) · [User Guide](USER_GUIDE_EN.md)
+[Русский](Docs/README_RU.md) · [User Guide](Docs/USER_GUIDE_EN.md)
+
+**Contents**
+
+- [Why It Exists](#why-it-exists)
+- [Four Palettes](#four-palettes)
+- [The Principle](#the-principle)
+- [Editions](#editions)
+- [Next](#next)
+- [Technical Reference](#technical-reference)
 
 Technical video preparation and stylisation on VapourSynth and FFmpeg.
 Twenty-two presets across four independent palettes, without the neural layer.
@@ -75,7 +84,7 @@ plugins.
 
 ## Next
 
-* [User Guide](USER_GUIDE_EN.md) — installing the engine, first run, palettes,
+* [User Guide](Docs/USER_GUIDE_EN.md) — installing the engine, first run, palettes,
   profiles, command line.
 
 ---

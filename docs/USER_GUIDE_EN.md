@@ -1,5 +1,17 @@
 # VapourWiki — Audion VS Engine preset reference (EN)
 
+**Contents**
+
+- [Before you start: install the engine](#before-you-start-install-the-engine)
+- [Decision tree — which preset for which task](#decision-tree--which-preset-for-which-task)
+- [PRECISION palette — technical pipeline (8 presets)](#precision-palette--technical-pipeline-8-presets)
+- [FILM_LOOKS palette — film emulations (5 presets)](#filmlooks-palette--film-emulations-5-presets)
+- [RETRO palette — analog character (2 presets)](#retro-palette--analog-character-2-presets)
+- [RESTORATION palette — heavy guns (7 presets, Phase 18.B + NNEDI3 2x)](#restoration-palette--heavy-guns-7-presets-phase-18b--nnedi3-2x)
+- [Smoke / bench status](#smoke--bench-status)
+- [Encoders — my patterns](#encoders--my-patterns)
+- [More — full reference](#more--full-reference)
+
 Full English reference for all 22 presets across 4 palettes. Starts with a **decision tree** ("which preset for which task"). Followed by detailed per-preset description: what it does, on what footage, key parameters, recommended encoder.
 
 > Per-preset docstrings live inside each `.vpy` file in `system_core/presets/<palette>/`. This document is the navigation-friendly companion.

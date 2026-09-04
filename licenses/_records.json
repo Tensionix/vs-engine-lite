@@ -81,7 +81,7 @@
   },
   {
     "name": "anyio",
-    "version": "4.14.2",
+    "version": "4.15.0",
     "license": "MIT",
     "source": "wheelhouse",
     "license_files": [
@@ -127,9 +127,8 @@
     "license_files": [
       "licenses/THIRD_PARTY_NOTICES.txt"
     ],
-    "license_fingerprint": "bc7354b0ee4f770469d29442d787c2ccce79b41107e3c3dcc55795233d691e8b",
+    "license_fingerprint": "5be003bbcd294a6a2d0d704180198f27e7043ecaa45e9e9e193696d8b3a1948a",
     "legal_document_hashes": [
-      "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "099b9dcb04485b32cf93aba82b303e099bcf98ab2476fae716d22c930fd6b915"
     ]
   },
@@ -427,7 +426,7 @@
   },
   {
     "name": "lxml",
-    "version": "6.1.2",
+    "version": "6.1.3",
     "license": "BSD-3-Clause",
     "source": "wheelhouse",
     "license_files": [

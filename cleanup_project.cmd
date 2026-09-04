@@ -44,7 +44,7 @@ echo   scratch files: *.tmp, *.temp, *.bak, *.old, *.orig
 echo.
 echo Kept:
 echo   *.cmd, *.ps1, *.py, *.vpy, docs, config\, config\profiles\
-echo   .gitignore and .gitkeep placeholders created by install\init_folders.cmd
+echo   .gitignore, and the empty service folders created by install\init_folders.cmd
 echo.
 echo IMPORTANT: launchers will need the installer scripts again after this cleanup.
 echo.
@@ -134,7 +134,7 @@ if exist "%BASE_DIR%\install\init_folders.cmd" (
 echo.
 echo [DONE] Project cleanup finished. Removed approximately %REMOVED% items.
 echo The tree is now intended to contain only source scripts, docs, configs
-echo and empty service folders with .gitkeep placeholders.
+echo and empty service folders.
 echo.
 call :WAIT_IF_NEEDED
 exit /b 0
